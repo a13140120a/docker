@@ -40,9 +40,10 @@ s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```js
 chmod +x /usr/local/bin/docker-compose
 ```
-
-
-
+* 將帳號加入 docker 群組
+```js
+sudo usermod -aG docker USERNAME
+```
 
 
 
