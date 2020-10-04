@@ -1,0 +1,114 @@
+
+KAFKA全指令
+
+su root
+
+yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latestlogrotatedocker-logrotatedocker-engine 
+
+
+yum install -y yum-utils device-mapper-persistent-data lvm2 
+
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+
+yum install -y docker-ce docker-ce-cli containerd.io
+
+
+systemctl enable docker 
+
+systemctl start docker
+
+yum install wget 
+
+wget http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.107-3.el7.noarch.rpm 
+
+
+yum install -y policycoreutils-python
+
+
+rpm -ivh container-selinux-2.107-3.el7.noarch.rpm
+
+
+
+curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+
+chmod +x /usr/local/bin/docker-compose 
+
+
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose 
+
+
+yum install -y git 
+
+
+cd ~ 
+
+
+git clone https://github.com/semicolon1709/kafka-tutorial-docker-env.git 
+
+
+cd kafka-tutorial-docker-env 
+
+
+docker-compose up -d
+
+
+docker-compose ps
+
+docker-compose logs zookeeper | grep -i binding
+
+
+
+docker-compose logs kafka | grep -i started
+
+
+docker exec -it kafka bash
+
+
+kafka-topics --create --topic test --replication-factor 1 --partitions 1 --zookeeper zookeeper:2181
+
+
+exit
+
+
+docker-compose stop
+
+docker-compose start
+
+docker-compose down
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
