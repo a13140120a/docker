@@ -45,8 +45,28 @@ chmod +x /usr/local/bin/docker-compose
 sudo usermod -aG docker USERNAME
 ```
 
-
-
+* 基本操作
+  * 列出所有的容器 ID
+  ```js
+  docker ps -aq
+  ```
+  * 停止所有的容器
+  ```js
+  docker stop $(docker ps -aq)
+  ```
+  * 删除所有的容器
+  ```js
+  docker rm $(docker ps -aq)
+  ```
+  * 删除所有的image
+  ```js
+  docker rmi $(docker images -q)
+  ```
+  * 複製文件
+  ```js
+  docker cp mycontainer:/opt/file.txt /opt/local/
+  docker cp /opt/local/file.txt mycontainer:/opt/
+  ```
 
 
 
